@@ -1,7 +1,9 @@
+"use client";
+
 import { useTransition } from "react";
 import { Button } from "./ui/button";
-import { useRouter } from "next/router";
 import { createNewDocument } from "@/lib/actions";
+import { useRouter } from "next/navigation";
 
 export default function NewDocumentButton() {
   const [isPending, startTransition] = useTransition();
@@ -16,7 +18,7 @@ export default function NewDocumentButton() {
 
   return (
     <div>
-      <Button onClick={handleCreateNewDocument} disabled={!isPending}>
+      <Button onClick={handleCreateNewDocument} disabled={isPending}>
         {isPending ? "Creating..." : "New Document"}
       </Button>
     </div>
